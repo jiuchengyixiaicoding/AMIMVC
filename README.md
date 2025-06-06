@@ -4,3 +4,8 @@ Model Flowchart
 ![model_struct](https://github.com/user-attachments/assets/49d9e7ad-6560-4c6a-865a-987339933c4e)
 
 After the incomplete multi-view features are completed by inference evaluation, zo and zt are encoded by the original encoder and the target encoder for comparison. The original encoded features are mapped to another view space through the cross-view decoder to obtain xr, and zt is cross-compared with xr, that is, xr1 is compared with zt2, and xr2 is compared with zt1. zo is also passed to the clustering module for semantic comparison.
+Requirements
+DataSets
+Quick Start
+Results
+<img width="448" alt="table" src="https://github.com/user-attachments/assets/52cd327f-4c2e-44c4-9aa6-52a4ca649707" />
