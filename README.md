@@ -6,7 +6,7 @@ Most of the existing multi-view clustering methods are based on the assumption t
 After the incomplete multi-view features are completed by inference evaluation, zo and zt are encoded by the original encoder and the target encoder for comparison. The original encoded features are mapped to another view space through the cross-view decoder to obtain xr, and zt is cross-compared with xr, that is, xr1 is compared with zt2, and xr2 is compared with zt1. zo is also passed to the clustering module for semantic comparison.
 # Requirements
 # DataSets
-In order to prove the performance of our model under datasets of the same type but different sample numbers, we choose Handwritten and MNIST-USPS datasets for experiments.Due to prove the performance of ATIMVC under different types of data sets with increasing sample numbers, we add BDGP and Fashion data sets for experiments.
+In order to prove the performance of our model under datasets of the same type but different sample numbers, we choose Handwritten and MNIST-USPS datasets for experiments.Due to prove the performance of ATIMVC under different types of data sets with increasing sample numbers, we add BDGP and Fashion data sets for experiments.
 # Quick Start
 python main.py
 # Results
