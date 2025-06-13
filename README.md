@@ -8,6 +8,8 @@ After the incomplete multi-view features are completed by inference evaluation, 
 
 # DataSets
 In order to prove the performance of our model under datasets of the same type but different sample numbers, we choose Handwritten and MNIST-USPS datasets for experiments.Due to prove the performance of ATIMVC under different types of data sets with increasing sample numbers, we add BDGP and Fashion data sets for experiments.
+You can obtain the required dataset by using this link.
+https://pan.baidu.com/s/1C194UFYTeF7Qx-Hf4Y67gw 提取码: 9u2y
 # Quick Start
 python train.py
 # Results
