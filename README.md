@@ -3,7 +3,7 @@ Most of the existing multi-view clustering methods are based on the assumption t
 # Model Flowchart
 ![model_struct](https://github.com/user-attachments/assets/49d9e7ad-6560-4c6a-865a-987339933c4e)
 
-After the incomplete multi-view features are completed by inference evaluation, z>o and z>t are encoded by the original encoder and the target encoder for comparison. The original encoded features are mapped to another view space through the cross-view decoder to obtain xr, and zt is cross-compared with xr, that is, xr1 is compared with zt2, and xr2 is compared with zt1. zo is also passed to the clustering module for semantic comparison.
+After the incomplete multi-view features are completed by inference evaluation, z<sup>o</sup> and z<sup>t</sup> are encoded by the original encoder and the target encoder for comparison. The original encoded features are mapped to another view space through the cross-view decoder to obtain xr, and zt is cross-compared with xr, that is, xr1 is compared with zt2, and xr2 is compared with zt1. zo is also passed to the clustering module for semantic comparison.
 # Requirements
 
 # DataSets
