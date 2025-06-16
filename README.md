@@ -57,10 +57,11 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 </p>
 
 <!-- 公式 (5): Y = A·D⁻¹ -->
-<p class="formula">
-  Y = A·D<sup>-1</sup>  
-  <span class="equation-tag">(5)</span>
-</p>
+<div align='center'>
+
+  ![1750072255039](https://github.com/user-attachments/assets/782e7651-2ed6-455c-be33-1a412cc89bac)
+
+</div>
 
 <p>
   Where A is the adjacency matrix of this graph, A<sub>ij</sub> represents the edge weights, 
@@ -74,10 +75,11 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 </p>
 
 <!-- 公式 (6): P(m) = P(m-1)·Y = ... = P(0)·Yᵐ -->
-<p class="formula">
-  P(m) = P(m - 1)·Y = ... = P(0)·Y<sup>m</sup>  
-  <span class="equation-tag">(6)</span>
-</p>
+<div align='center'>
+  
+  ![1750072282290](https://github.com/user-attachments/assets/adc69a64-6e74-4beb-986c-965f0bd91209)
+
+</div>
 
 <p>
   Where Y<sup>m</sup> is the m-th power of the mobility probability matrix Y. 
@@ -93,10 +95,11 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 </p>
 
 <!-- 公式 (7): A_ij = exp(-||z_ti^v - z_tj^v||² / η) -->
-<p class="formula">
-  A<sub>ij</sub> = exp(-||z<sub>ti</sub><sup>(v)</sup> - z<sub>tj</sub><sup>(v)</sup>||² / η)  
-  <span class="equation-tag">(7)</span>
-</p>
+<div align='center'>
+  
+  ![1750072308011](https://github.com/user-attachments/assets/f2dd01aa-2956-4708-a477-8ae427503ddd)
+
+</div>
 
 <p>
   Here z<sub>ti</sub><sup>(v)</sup> is the anchor embedding of the i-th node, 
@@ -112,10 +115,11 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 </p>
 
 <!-- 公式 (8): D^v = α·I + (1-α)·I -->
-<p class="formula">
-  D<sup>v</sup> = α·I + (1 - α)·I  
-  <span class="equation-tag">(8)</span>
-</p>
+<div align='center'>
+  
+  ![Uploading 1750072332751.png…]()
+
+</div>
 
 <p>
   I is the identity matrix. Considering the balance, we set α = 0.5 in the experiment.
