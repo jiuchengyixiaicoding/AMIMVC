@@ -6,13 +6,7 @@ Most of the existing multi-view clustering methods are based on the assumption t
 After the incomplete multi-view features are completed by inference evaluation, z<sub>o</sub> and z<sub>t</sub> are encoded by the original encoder and the target encoder for comparison. The original encoded features are mapped to another view space through the cross-view decoder to obtain xr, and z<sub>t</sub> is cross-compared with xr, that is, xr<sup>1</sup> is compared with z<sub>t</sub><sup>2</sup>, and xr<sup>2</sup> is compared with z<sub>t</sub><sup>1</sup>. z<sub>o</sub> is also passed to the clustering module for semantic comparison.
 # Method
 ## Encoder
-The view original features and target features are obtained by encoder \( E_o^{(v)} \) and target encoder \( E_t^{(v)} \), \( E_t^{(v)} \) is the momentum version \([11]\) of \( E_o^{(v)} \). Specifically \( E_t^{(v)} \), is not architecturally different from \( E_o^{(v)} \) and self - adjusts using exponential moving average (EMA) of \( E_o^{(v)} \).
-
-For each view \( v \), we transmit instances in small batches to \( E_o^{(v)} \) and \( E_t^{(v)} \) to obtain the corresponding view - specific embeddings, i.e.,
-
-\[
-Z_{oj}^{(v)} = E_o^{(v)}(X_i^{(v)}), \quad Z_{tj}^{(v)} = E_t^{(v)}(X_i^{(v)}) \tag{1}
-\]
+$ Z_{oj}^{\langle v \rangle} = E_o^{\langle v \rangle}(X_i^{\langle v \rangle}),\quad Z_{tj}^{\langle v \rangle} = E_t^{\langle v \rangle}(X_i^{\langle v \rangle}) \tag{1} $
 ## Cross-view Decoders
 ## Instance-level Double Contrastive Learning
 ## The Affinity Matrix Guides Positive and Negative Pair Identification
