@@ -22,6 +22,55 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 
 
 ## Instance-level Double Contrastive Learning
+<p>Due to the unique encoder architecture, we use a special instance-level bi-contrastive loss function accordingly:</p>
+
+<!-- 公式 L_same -->
+<p class="formula">
+    \( \mathcal{L}_{\text{same}} = \sum_{a=0}^{v} Q \big( D^{(a)}, g \big( z_{o,i}^{(a)}, z_{t,i}^{(a)} \big) \big) \),
+</p>
+
+<!-- 公式 L_diff -->
+<p class="formula">
+    \( \mathcal{L}_{\text{diff}} = \sum_{a=0}^{v} Q \big( D^{(b)}, g \big( x_r^{(a \to b)}, z_{t,i}^{(b)} \big) \big) \),
+</p>
+
+<!-- 公式 L 总和 -->
+<p class="formula">
+    \( \mathcal{L} = \mathcal{L}_{\text{same}} + \mathcal{L}_{\text{diff}} \).
+    <span class="equation-tag">(3)</span>
+</p>
+
+<p>
+    \( \mathcal{L}_{\text{same}} \) and \( \mathcal{L}_{\text{diff}} \) represent the <u>intra-view</u> contrast loss and the inter-view contrast loss. These two losses aim to optimize the feature representation of the model by maximizing the similarity between pairs of positive samples and minimizing the similarity between pairs of negative samples. Where \( Q(d,e) \) is the cross-entropy function, \( D \in \mathbb{R}^{N \times n} \) is the pseudo-target (<u>Eq. 8</u>) used to indicate positive and negative sample pairs, and \( g(k_i, l_j) \) is the pairwise similarity \( s(k_i, l_j) \) with row normalization operator, that is,
+</p>
+
+<!-- 公式 g(k_i, l_j) -->
+<p class="formula">
+    \( g(k_i, l_j) = \frac{\exp \big( s(k_i, l_j / \tau) \big)}{\sum_{c=1}^{N} \exp \big( s(k_i, l_c / \tau) \big)} \)
+    <span class="equation-tag">(4)</span>
+</p>
+
+<p>
+    If \( \tau \) is too large, the model pays too much attention to difficult samples. When \( \tau \) is too small, the loss function is not sensitive to the similarity difference. Therefore, \( \tau \) is fixed as 0.5 in the experiment.
+</p>
+
+<style>
+/* 公式排版样式，让编号右对齐，公式整体有缩进等 */
+.formula {
+    margin: 0.5em 0;
+    text-indent: 1em; /* 公式整体缩进，方便区分正文 */
+    position: relative; /* 用于公式编号绝对定位 */
+}
+.equation-tag {
+    position: absolute;
+    right: 1em; /* 让编号靠右侧 */
+    font-weight: bold;
+}
+/* 如果你想让公式里的数学符号更贴近原生 LaTeX 显示风格，可调整字体等，如下示例 */
+.formula {
+    font-family: "Times New Roman", serif; /* 常用数学公式字体 */
+}
+</style>
 ## The Affinity Matrix Guides Positive and Negative Pair Identification
 # DataSets
 <p>In order to prove the performance of our model under datasets of the same type but different sample numbers, we choose Handwritten and MNIST-USPS datasets for experiments.Due to prove the performance of ATIMVC under different types of data sets with increasing sample numbers, we add BDGP and Fashion data sets for experiments.
