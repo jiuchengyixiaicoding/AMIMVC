@@ -16,7 +16,7 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 
 <!-- 公式部分用纯 HTML 构造，(2) 是公式编号 -->
 <p class="formula-equation">
-  x<sub>r<sub>j</sub></sub><sup>(a→b)</sup> = F<sup>(a→b)</sup>(z<sub>oj</sub><sup>(a)</sup>) 
+  xr<sub>j</sub><sup>(a→b)</sup> = F<sup>(a→b)</sup>(z<sub>o,j</sub><sup>(a)</sup>) 
   <span class="equation-tag">(2)</span>
 </p>
 
