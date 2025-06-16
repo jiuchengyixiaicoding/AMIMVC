@@ -37,14 +37,10 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
   D ∈ ℝ<sup>N×n</sup> is the pseudo-target (Eq. 8) used to indicate positive and negative sample pairs, 
   and g(k<sub>i</sub>, l<sub>j</sub>) is the pairwise similarity s(k<sub>i</sub>, l<sub>j</sub>) with row normalization operator, that is,
 </p>
-
-<!-- 若有公式 (4)，可继续用类似结构扩展 -->
-<!-- <p class="formula">
-  g(k<sub>i</sub>, l<sub>j</sub>) = ... 
-  <span class="equation-tag">(4)</span>
-</p> -->
-
-<p>
+<div align='center'>
+  
+![1750071759277](https://github.com/user-attachments/assets/a46a5b02-53d2-481f-b79e-f36be5cae225)
+</div>
   If τ is too large, the model pays too much attention to difficult samples. 
   When τ is too small, the loss function is not sensitive to the similarity difference. 
   Therefore, τ is fixed as 0.5 in the experiment.
