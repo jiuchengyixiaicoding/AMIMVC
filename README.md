@@ -12,7 +12,33 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 
 **Z<sub>oj</sub><sup>(v)</sup> = E<sub>o</sub><sup>(v)</sup>(X<sub>i</sub><sup>(v)</sup>)**, &emsp; **Z<sub>tj</sub><sup>(v)</sup> = E<sub>t</sub><sup>(v)</sup>(X<sub>i</sub><sup>(v)</sup>)** &emsp; (1)
 ## Cross-view Decoders
-As mentioned above, in order to solve the problem that only semantic level contrastive learning cannot fully mine the consistency of views, it is not found that contrastive learning of instance-level low-dimensional information can better reflect the essential structure and potential pattern of data, and help to learn the general representation of data, so as to improve the generalization ability of the model and prevent the excessive reinforcement of the consistency of different view embeddings during learning, which leads to the loss of view complementarity <sup>[12]</sup>. We employ a special decoder, namely the cross-view decoder. It moderately enforces consistency across views, while preserving the complementary information of views due to its special architectural philosophy. Its special architecture idea is to use the cross-view decoder \(F^{(a \to b)}\) to project the embedding \(z_{oj}^{(a)}\) of a view into the embedding space of another view b and output the reconstructed feature, i.e.,\(x_{r_j}^{(a \to b)} = F^{(a \to b)} \big( z_{oj}^{(a)} \big) \tag{2}\)
+<h2>2.2 Cross-view Decoders</h2>
+<p>As mentioned above, in order to solve the problem that only semantic level contrastive learning cannot fully mine the consistency of views, it is not found that contrastive learning of instance-level low-dimensional information can better reflect the essential structure and potential pattern of data, and help to learn the general representation of data, so as to improve the generalization ability of the model and prevent the excessive reinforcement of the consistency of different view embeddings during learning, which leads to the loss of view <a href="#ref12" title="文献引用">complementarity</a>. We employ a special decoder, namely the cross-view decoder. It moderately enforces consistency across views, while preserving the complementary information of views due to its special architectural philosophy. Its special architecture idea is to use the cross-view decoder <span class="formula">F<sup>(a→b)</sup></span> to project the embedding <span class="formula">z<sub>oj</sub><sup>(a)</sup></span> of a view into the embedding space of another view <span class="formula">b</span> and output the reconstructed feature, i.e.,</p>
+
+<!-- 公式部分用纯 HTML 构造，(2) 是公式编号 -->
+<p class="formula-equation">
+  x<sub>r<sub>j</sub></sub><sup>(a→b)</sup> = F<sup>(a→b)</sup>(z<sub>oj</sub><sup>(a)</sup>) 
+  <span class="equation-tag">(2)</span>
+</p>
+
+<!-- 若需要文献引用脚注，可加在这里（示例写法） -->
+<p id="ref12">[12] 这里补充文献具体内容或跳转链接</p>
+
+<!-- 可选：简单 CSS 美化公式显示（放 Markdown 里可内嵌<style>，或放单独样式文件） -->
+<style>
+.formula {
+  font-style: italic; /* 模拟公式字体 */
+}
+.formula-equation {
+  margin: 1em 0;
+  padding-left: 2em; 
+  text-indent: -1em;
+}
+.equation-tag {
+  float: right;
+  font-weight: bold;
+}
+</style>
 ## Instance-level Double Contrastive Learning
 ## The Affinity Matrix Guides Positive and Negative Pair Identification
 # DataSets
