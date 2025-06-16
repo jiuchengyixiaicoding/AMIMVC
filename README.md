@@ -38,7 +38,7 @@ class Network(nn.Module):
         self.cl = ContraLoss(0.5)
 ```
 
-### ✅ Role:
+### ✅ What does:
 This is the backbone of the project, which implements:
 - Multi-view encoders
 - Copy of encoder used for consistency constraints (' copy_encoder ')
@@ -82,7 +82,7 @@ def load_data(dataset):
     ...
 ```
 
-### What does:
+### ✅ What does:
 Load the data given the name of the dataset and return:
 - Dataset objects
 - View dimensions (' dims')
@@ -123,7 +123,7 @@ for epoch in range(args.mse_epochs + args.con_epochs + 1, args.mse_epochs + args
     semantic_train(epoch)
 ```
 
-### What it does:
+### ✅ What does:
 The training is divided into three stages:
 1. **Pre-train (MSE pre-train) ** : Reconstruct the input using the full sample.
 2. **Contrastive Train ** : Optimizes the model using the relationship between the full sample.
@@ -135,7 +135,7 @@ The training is divided into three stages:
 
 ---
 
-## 🔁 4. loss.py —— Loss Function Definition
+## 4. loss.py —— Loss Function Definition
 
 ### Core code snippet:
 
@@ -149,7 +149,7 @@ def forward_label(self, q_i, q_j):
     return loss + entropy
 ```
 
-### What it does:
+### ✅ What does:
 This class implements two contrastive learning losses:
 - 'forward_feature()' : feature space contrast loss (Cosine Similarity + InfoNCE)
 - 'forward_label()' : label space contrastive loss + distribution entropy regularization term
