@@ -124,11 +124,14 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 <p>
   I is the identity matrix. Considering the balance, we set α = 0.5 in the experiment.
 </p>
+
 # DataSets
 <p>In order to prove the performance of our model under datasets of the same type but different sample numbers, we choose Handwritten and MNIST-USPS datasets for experiments.Due to prove the performance of ATIMVC under different types of data sets with increasing sample numbers, we add BDGP and Fashion data sets for experiments.
 You can obtain the required dataset by using this link.</p>
 https://pan.baidu.com/s/1C194UFYTeF7Qx-Hf4Y67gw 提取码: 9u2y
+
 # Quick Start
 python train.py
+
 # Results
 <img width="448" alt="table" src="https://github.com/user-attachments/assets/52cd327f-4c2e-44c4-9aa6-52a4ca649707" />
