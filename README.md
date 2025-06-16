@@ -6,9 +6,9 @@ Most of the existing multi-view clustering methods are based on the assumption t
 After the incomplete multi-view features are completed by inference evaluation, z<sub>o</sub> and z<sub>t</sub> are encoded by the original encoder and the target encoder for comparison. The original encoded features are mapped to another view space through the cross-view decoder to obtain xr, and z<sub>t</sub> is cross-compared with xr, that is, xr<sup>1</sup> is compared with z<sub>t</sub><sup>2</sup>, and xr<sup>2</sup> is compared with z<sub>t</sub><sup>1</sup>. z<sub>o</sub> is also passed to the clustering module for semantic comparison.
 # Method
 ## Encoder
-The view original features and target features are obtained by encoder E<sup>o</sup><sub>(v)</sub> and target encoder \( E_t^{(v)} \), \( E_t^{(v)} \) is the momentum version \([11]\) of \( E_o^{(v)} \). Specifically \( E_t^{(v)} \), is not architecturally different from \( E_o^{(v)} \) and self-adjusts using exponential moving average (EMA) of \( E_o^{(v)} \).
+The view original features and target features are obtained by encoder **E<sub>o</sub><sup>(v)</sup>** and target encoder **E<sub>t</sub><sup>(v)</sup>**, **E<sub>t</sub><sup>(v)</sup>** is the momentum version \[[11]\] of **E<sub>o</sub><sup>(v)</sup>**. Specifically **E<sub>t</sub><sup>(v)</sup>**, is not architecturally different from **E<sub>o</sub><sup>(v)</sup>** and self-adjusts using exponential moving average (EMA) of **E<sub>o</sub><sup>(v)</sup>**.
 
-For each view \( v \), we transmit instances in small batches to \( E_o^{(v)} \) and \( E_t^{(v)} \) to obtain the corresponding view-specific embeddings, i.e.,
+For each view \( v \), we transmit instances in small batches to **E<sub>o</sub><sup>(v)</sup>** and **E<sub>t</sub><sup>(v)</sup>** to obtain the corresponding view-specific embeddings, i.e.,
 
 ![公式1](https://render.githubusercontent.com/render/math?math=Z_{oj}^{(v)}%20%3D%20E_o^{(v)}(X_i^{(v)}),%20%5Cquad%20Z_{tj}^{(v)}%20%3D%20E_t^{(v)}(X_i^{(v)})%20%5Ctag%7B1%7D)
 ## Cross-view Decoders
