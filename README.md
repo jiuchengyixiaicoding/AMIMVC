@@ -15,18 +15,19 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 </div>
 ## Cross-view Decoders
 <p>As mentioned above, in order to solve the problem that only semantic level contrastive learning cannot fully mine the consistency of views, it is not found that contrastive learning of instance-level low-dimensional information can better reflect the essential structure and potential pattern of data, and help to learn the general representation of data, so as to improve the generalization ability of the model and prevent the excessive reinforcement of the consistency of different view embeddings during learning, which leads to the loss of view <a href="#ref12" title="文献引用">complementarity</a>. We employ a special decoder, namely the cross-view decoder. It moderately enforces consistency across views, while preserving the complementary information of views due to its special architectural philosophy. Its special architecture idea is to use the cross-view decoder <span class="formula">F<sup>(a→b)</sup></span> to project the embedding <span class="formula">z<sub>oj</sub><sup>(a)</sup></span> of a view into the embedding space of another view <span class="formula">b</span> and output the reconstructed feature, i.e.,</p>
-
+<div align='center'>
 
 ![1750071504493](https://github.com/user-attachments/assets/4a1bb796-c278-4bba-88f5-147cebe65fec)
-
+</div>
 
 ## Instance-level Double Contrastive Learning
 <p>
   Due to the unique encoder architecture, we use a special instance-level bi-contrastive loss function accordingly:
 </p>
-
+<div align='center'>
+  
 ![1750071545352](https://github.com/user-attachments/assets/7a506f83-83a8-4523-bb41-1034368bd303)
-
+</div>
 
 <p>
   ℒ<sub>same</sub> and ℒ<sub>diff</sub> represent the intra-view contrast loss and the inter-view contrast loss. 
