@@ -5,6 +5,157 @@ Most of the existing multi-view clustering methods are based on the assumption t
 
 <p>After the incomplete multi-view features are completed by inference evaluation, z<sub>o</sub> and z<sub>t</sub> are encoded by the original encoder and the target encoder for comparison. The original encoded features are mapped to another view space through the cross-view decoder to obtain xr, and z<sub>t</sub> is cross-compared with xr, that is, xr<sup>1</sup> is compared with z<sub>t</sub><sup>2</sup>, and xr<sup>2</sup> is compared with z<sub>t</sub><sup>1</sup>. z<sub>o</sub> is also passed to the clustering module for semantic comparison.</p>
 
+# Core_Code
+The following is the analysis and introduction of the core code section in these files.
+
+---
+
+## 🧠 1. network.py —— Definition of Network Structure
+
+### Core code snippet:
+
+```python
+class Network(nn.Module):
+    def __init__(self, view, input_size, feature_dim, high_feature_dim, class_num, device):
+        super(Network, self).__init__()
+        self.encoders = []
+        self.decoders = []
+        for v in range(view):
+            self.encoders.append(Encoder(input_size[v], feature_dim).to(device))
+            self.decoders.append(Decoder(input_size[v], feature_dim).to(device))
+        self.encoders = nn.ModuleList(self.encoders)  
+        self.copy_encoder = copy.deepcopy(self.encoders)
+        self.decoders = nn.ModuleList(self.decoders)  
+        self.feature_cross_v_dec = nn.ModuleList([MLP(feature_dim, feature_dim).to(device) for i in range(view)])
+        self.feature_contrastive_module = nn.Sequential(
+            nn.Linear(feature_dim, high_feature_dim),
+        )
+        self.label_contrastive_module = nn.Sequential(
+            nn.Linear(feature_dim, class_num),
+            nn.Softmax(dim=1)
+        )
+        self.view = view
+        self.cl = ContraLoss(0.5)
+```
+
+### ✅ Role:
+This is the backbone of the project, which implements:
+- Multi-view encoders
+- Copy of encoder used for consistency constraints (' copy_encoder ')
+- decoders used to reconstruct the original input (' decoders')
+- Cross-view feature transformation module (' feature_cross_v_dec ')
+- feature_contrastive_module, label_contrastive_module)
+- Contrastive Loss module (' cl ')
+
+### Other key functions:
+- 'forward()' : This propagates forward, returning the hidden representations of each view, predicted labels, etc.
+- 'forward_cluster()' : Used for cluster inference.
+- 'kernel_affinity()' : Builds a graph affinity matrix for modeling similarity between samples.
+
+---
+
+## 📊 2. dataloader.py —— Data loading and preprocessing
+
+### Core classes:
+- `BDGP`
+- `MNIST_USPS`
+- `Fashion`
+- `HandWritten`
+- `Caltech101`
+
+### Core code snippet:
+
+```python
+def load_data(dataset):
+    if dataset == "BDGP":
+        dataset = BDGP('./data/')
+        dims = [1750, 79]
+        view = 2
+        data_size = 2500
+        class_num = 5
+    elif dataset == "MNIST_USPS":
+        dataset = MNIST_USPS('./data/')
+        dims = [784, 784]
+        view = 2
+        class_num = 10
+        data_size = 5000
+    ...
+```
+
+### What does:
+Load the data given the name of the dataset and return:
+- Dataset objects
+- View dimensions (' dims')
+- Number of views (' view ')
+- Number of classes (' class_num ')
+- Total sample size (' data_size ')
+
+### Data Augmentation and Missing Simulation:
+
+
+- 'percentage_dele()' : The missing fraction of the sample is simulated.
+
+
+- 'sample_mean()' : Calculates the sample mean, which is used to generate fake samples later.
+
+
+- 'pretrain_sigma()' : computes the standard deviation for noise generation.
+
+---
+
+## 🏋️ 3. train.py —— Training logic and flow control
+
+### Core code snippet:
+
+```python
+model = Network(view, dims, args.feature_dim, args.high_feature_dim, class_num, device)
+model = model.to(device)
+
+optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
+
+for epoch in range(1, args.mse_epochs + 1):
+    pretrain(epoch, model)
+
+for epoch in range(args.mse_epochs + 1, args.mse_epochs + args.con_epochs + 1):
+    contrastive_train(epoch)
+
+for epoch in range(args.mse_epochs + args.con_epochs + 1, args.mse_epochs + args.con_epochs + args.tune_epochs + 1):
+    semantic_train(epoch)
+```
+
+### What it does:
+The training is divided into three stages:
+1. **Pre-train (MSE pre-train) ** : Reconstruct the input using the full sample.
+2. **Contrastive Train ** : Optimizes the model using the relationship between the full sample.
+3. **Semantic Train ** : Using generated pseudo-examples to further optimize the model.
+
+### Key technical points:
+- ** Missing Samples generation mechanism ** : The best matching samples are found by prompt_box + cosine similarity to generate missing content.
+- ** Clustering performance Evaluation ** : ACC/NMI/ARI metrics are used to measure the clustering performance.
+
+---
+
+## 🔁 4. loss.py —— Loss Function Definition
+
+### Core code snippet:
+
+```python
+def forward_label(self, q_i, q_j):
+    p_i = q_i.sum(0).view(-1)
+    p_i /= p_i.sum()
+    ne_i = math.log(p_i.size(0)) + (p_i * torch.log(p_i)).sum()
+    ...
+    loss = self.criterion(logits, labels)
+    return loss + entropy
+```
+
+### What it does:
+This class implements two contrastive learning losses:
+- 'forward_feature()' : feature space contrast loss (Cosine Similarity + InfoNCE)
+- 'forward_label()' : label space contrastive loss + distribution entropy regularization term
+
+Together, these losses drive the model to learn discriminative feature representations.
+
 # Method
 
 ## Encoder
