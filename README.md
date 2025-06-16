@@ -48,6 +48,69 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 
 
 ## The Affinity Matrix Guides Positive and Negative Pair Identification
+<h1>Our affinity matrix guidance method</h1>
+<p>
+  Our affinity matrix guidance method can not only distinguish the samples in the neighborhood according to the affinity but also find the potential high-order neighbors. Fig. 2 shows that our affinity matrix is obtained using the random-walk algorithm <sup>[13]</sup>. Let be an undirected graph \( G \) that contains \( n \) segments and for having \( n \) nodes, its random walk matrix is defined as:
+</p>
+<!-- 公式 (5) 位置，后续可替换为图片，这里先模拟显示 -->
+<p class="formula">
+  \( Y = AD^{-1} \)
+  <span class="equation-tag">(5)</span>
+</p>
+<p>
+  Where \( A \) is the adjacency matrix of this graph, \( A_{ij} \) represents the edge weights, \( D \) is the diagonal matrix, and \( D_{ii} \) represents the sum of the values in the \( i \)-th row of the \( A \) matrix. \( Y_{ij} \) represents the probability of moving from the \( i \)-th node to the \( j \)-th node in one step.
+</p>
+<p>
+  Let \( P(m) \) be the probability that node \( i \) moves to node \( j \) at step \( m \). We can deduce that the probability after the random walk at step \( m \) can be expressed as follows.
+</p>
+<p class="formula">
+  \( P(m) = P(m - 1)Y = ... = P(0)Y^m \)
+  <span class="equation-tag">(6)</span>
+</p>
+<p>
+  Where \( Y^m \) is the \( m \)-th power of the mobility probability matrix \( Y \). If the step size \( m \) is too small, it will reduce the experimental results, while if it is too large, it will reduce the running speed of the model. Therefore, we fix the step size as 5.
+</p>
+<p>
+  We adopt heat kernel similarity <sup>[14]</sup> to define edge weights to build a fully connected affinity graph for in-batch instances, and use the identity matrix to preserve the self-characteristics of views. The heat kernel similarity formula is:
+</p>
+<p class="formula">
+  \( A_{ij} = \exp \left( -\frac{\| z_{ti}^{(v)} - z_{tj}^{(v)} \|^2}{\eta} \right) \)
+  <span class="equation-tag">(7)</span>
+</p>
+<p>
+  Here \( z_{ti}^{(v)} \) is the anchor embedding of the \( i \)-th and \( z_{tj}^{(v)} \) is the corresponding negative embedding, and we keep \( \eta \) as 0.1 in the experiments.
+</p>
+<p>
+  Each row of the matrix \( A^{(v)} \) is normalized to ensure that the sum of each row is 1, resulting in the matrix \( Y^{(v)} \), and so on. We obtain the \( m \)-step transition matrix \( Y^{(v)^m} \), whose entries \( Y_{ij}^{(v)^m} \) represent the probability that node \( j \) is a neighbor of anchor \( j \) at step \( m \), which is \( \text{FN} \). We use \( Y^m \) as a pseudo-target for <u>Eq. 1</u> to achieve robustness to \( \text{FN} \), i.e.
+</p>
+<p class="formula">
+  \( D^v = \alpha I + (1 - \alpha)I \)
+  <span class="equation-tag">(8)</span>
+</p>
+<p>
+  \( I \) is the identity matrix, and considering the balance, we set \( \alpha \) to 0.5 in the experiment.
+</p>
+
+<style>
+.formula {
+  position: relative;
+  padding-left: 2em;
+  text-indent: -1em;
+  margin: 0.8em 0;
+}
+.equation-tag {
+  position: absolute;
+  right: 1em;
+  font-weight: bold;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+u {
+  text-decoration: underline;
+}
+</style>
 # DataSets
 <p>In order to prove the performance of our model under datasets of the same type but different sample numbers, we choose Handwritten and MNIST-USPS datasets for experiments.Due to prove the performance of ATIMVC under different types of data sets with increasing sample numbers, we add BDGP and Fashion data sets for experiments.
 You can obtain the required dataset by using this link.</p>
