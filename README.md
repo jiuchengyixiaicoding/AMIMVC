@@ -14,11 +14,8 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 ## Cross-view Decoders
 <p>As mentioned above, in order to solve the problem that only semantic level contrastive learning cannot fully mine the consistency of views, it is not found that contrastive learning of instance-level low-dimensional information can better reflect the essential structure and potential pattern of data, and help to learn the general representation of data, so as to improve the generalization ability of the model and prevent the excessive reinforcement of the consistency of different view embeddings during learning, which leads to the loss of view <a href="#ref12" title="文献引用">complementarity</a>. We employ a special decoder, namely the cross-view decoder. It moderately enforces consistency across views, while preserving the complementary information of views due to its special architectural philosophy. Its special architecture idea is to use the cross-view decoder <span class="formula">F<sup>(a→b)</sup></span> to project the embedding <span class="formula">z<sub>oj</sub><sup>(a)</sup></span> of a view into the embedding space of another view <span class="formula">b</span> and output the reconstructed feature, i.e.,</p>
 
-<!-- 公式部分用纯 HTML 构造，(2) 是公式编号 -->
-<p class="formula-equation">
-  xr<sub>j</sub><sup>(a→b)</sup> = F<sup>(a→b)</sup>(z<sub>o,j</sub><sup>(a)</sup>) 
-  <span class="equation-tag">(2)</span>
-</p>
+
+![1750071504493](https://github.com/user-attachments/assets/4a1bb796-c278-4bba-88f5-147cebe65fec)
 
 
 ## Instance-level Double Contrastive Learning
@@ -26,11 +23,8 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 <p>
   Due to the unique encoder architecture, we use a special instance-level bi-contrastive loss function accordingly:
 </p>
-<!-- 公式 L = L_same + L_diff （编号 (3)） -->
-<p class="formula">
-  ℒ = ℒ<sub>same</sub> + ℒ<sub>diff</sub> 
-  <span class="equation-tag">(3)</span>
-</p>
+![1750071545352](https://github.com/user-attachments/assets/7a506f83-83a8-4523-bb41-1034368bd303)
+
 
 <p>
   ℒ<sub>same</sub> and ℒ<sub>diff</sub> represent the intra-view contrast loss and the inter-view contrast loss. 
