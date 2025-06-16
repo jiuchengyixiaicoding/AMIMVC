@@ -117,7 +117,8 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 <!-- 公式 (8): D^v = α·I + (1-α)·I -->
 <div align='center'>
   
-  ![Uploading 1750072332751.png…]()
+  
+![1750072332751](https://github.com/user-attachments/assets/3f43b7f8-a927-45cf-815b-77479e292943)
 
 </div>
 
