@@ -24,51 +24,45 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 ## Instance-level Double Contrastive Learning
 <p>Due to the unique encoder architecture, we use a special instance-level bi-contrastive loss function accordingly:</p>
 
-<!-- 公式 L_same -->
-<p class="formula">
-    \( \mathcal{L}_{\text{same}} = \sum_{a=0}^{v} Q \big( D^{(a)}, g \big( z_{o,i}^{(a)}, z_{t,i}^{(a)} \big) \big) \),
+<!-- 这里后续你替换为公式图片，先留空或用占位示意 -->
+<p id="formula-1">
+  <!-- 公式图片插入位置，示例：<img src="your-formula1.png" alt="公式1"> -->
 </p>
 
-<!-- 公式 L_diff -->
-<p class="formula">
-    \( \mathcal{L}_{\text{diff}} = \sum_{a=0}^{v} Q \big( D^{(b)}, g \big( x_r^{(a \to b)}, z_{t,i}^{(b)} \big) \big) \),
+<p id="formula-2">
+  <!-- 公式图片插入位置，示例：<img src="your-formula2.png" alt="公式2"> -->
 </p>
 
-<!-- 公式 L 总和 -->
-<p class="formula">
-    \( \mathcal{L} = \mathcal{L}_{\text{same}} + \mathcal{L}_{\text{diff}} \).
-    <span class="equation-tag">(3)</span>
-</p>
-
-<p>
-    \( \mathcal{L}_{\text{same}} \) and \( \mathcal{L}_{\text{diff}} \) represent the <u>intra-view</u> contrast loss and the inter-view contrast loss. These two losses aim to optimize the feature representation of the model by maximizing the similarity between pairs of positive samples and minimizing the similarity between pairs of negative samples. Where \( Q(d,e) \) is the cross-entropy function, \( D \in \mathbb{R}^{N \times n} \) is the pseudo-target (<u>Eq. 8</u>) used to indicate positive and negative sample pairs, and \( g(k_i, l_j) \) is the pairwise similarity \( s(k_i, l_j) \) with row normalization operator, that is,
-</p>
-
-<!-- 公式 g(k_i, l_j) -->
-<p class="formula">
-    \( g(k_i, l_j) = \frac{\exp \big( s(k_i, l_j / \tau) \big)}{\sum_{c=1}^{N} \exp \big( s(k_i, l_c / \tau) \big)} \)
-    <span class="equation-tag">(4)</span>
+<p id="formula-3">
+  \( \mathcal{L} = \mathcal{L}_{\text{same}} + \mathcal{L}_{\text{diff}} \). 
+  <span class="equation-tag">(3)</span>
+  <!-- 也可替换为：<img src="your-formula3.png" alt="公式3"> <span class="equation-tag">(3)</span> -->
 </p>
 
 <p>
-    If \( \tau \) is too large, the model pays too much attention to difficult samples. When \( \tau \) is too small, the loss function is not sensitive to the similarity difference. Therefore, \( \tau \) is fixed as 0.5 in the experiment.
+  \( \mathcal{L}_{\text{same}} \) and \( \mathcal{L}_{\text{diff}} \) represent the <u>intra-view</u> contrast loss and the inter-view contrast loss. These two losses aim to optimize the feature representation of the model by maximizing the similarity between pairs of positive samples and minimizing the similarity between pairs of negative samples. Where \( Q(d,e) \) is the cross-entropy function, \( D \in \mathbb{R}^{N \times n} \) is the pseudo-target (<u>Eq. 8</u>) used to indicate positive and negative sample pairs, and \( g(k_i, l_j) \) is the pairwise similarity \( s(k_i, l_j) \) with row normalization operator, that is,
+</p>
+
+<p id="formula-4">
+  <!-- 公式图片插入位置，示例：<img src="your-formula4.png" alt="公式4"> <span class="equation-tag">(4)</span> -->
+</p>
+
+<p>
+  If \( \tau \) is too large, the model pays too much attention to difficult samples. When \( \tau \) is too small, the loss function is not sensitive to the similarity difference. Therefore, \( \tau \) is fixed as 0.5 in the experiment.
 </p>
 
 <style>
-/* 公式排版样式，让编号右对齐，公式整体有缩进等 */
-.formula {
-    margin: 0.5em 0;
-    text-indent: 1em; /* 公式整体缩进，方便区分正文 */
-    position: relative; /* 用于公式编号绝对定位 */
-}
+/* 可选的样式，让排版更贴近原文档，可根据需求调整或删除 */
 .equation-tag {
-    position: absolute;
-    right: 1em; /* 让编号靠右侧 */
-    font-weight: bold;
+  font-weight: bold;
+  margin-left: 0.5em;
 }
-/* 如果你想让公式里的数学符号更贴近原生 LaTeX 显示风格，可调整字体等，如下示例 */
-.formula {
-    font-family: "Times New Roman", serif; /* 常用数学公式字体 */
+u {
+  text-decoration: underline;
+}
+p {
+  margin: 0.8em 0;
+  line-height: 1.6;
 }
 </style>
 ## The Affinity Matrix Guides Positive and Negative Pair Identification
