@@ -53,27 +53,7 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
   Therefore, τ is fixed as 0.5 in the experiment.
 </p>
 
-<!-- 可选样式：让公式编号右对齐、下划线更清晰 -->
-<style>
-.formula {
-  position: relative; /* 用于编号绝对定位 */
-  padding-left: 2em;  /* 给编号预留空间 */
-  text-indent: -1em;  /* 抵消缩进，让公式左对齐 */
-  margin: 0.8em 0;    /* 段落间距 */
-}
-.equation-tag {
-  position: absolute; 
-  right: 1em;         /* 编号靠右 */
-  font-weight: bold;  /* 编号加粗 */
-}
-u {
-  text-decoration: underline; /* 下划线样式 */
-}
-/* 数学符号（如 ℒ、ℝ、τ ）需确保字体支持，可强制指定字体 */
-body {
-  font-family: "Times New Roman", serif; 
-}
-</style>
+
 ## The Affinity Matrix Guides Positive and Negative Pair Identification
 # DataSets
 <p>In order to prove the performance of our model under datasets of the same type but different sample numbers, we choose Handwritten and MNIST-USPS datasets for experiments.Due to prove the performance of ATIMVC under different types of data sets with increasing sample numbers, we add BDGP and Fashion data sets for experiments.
