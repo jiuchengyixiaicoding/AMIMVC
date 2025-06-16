@@ -135,7 +135,7 @@ The training is divided into three stages:
 
 ---
 
-## 4. loss.py —— Loss Function Definition
+## 🔁 4. loss.py —— Loss Function Definition
 
 ### Core code snippet:
 
