@@ -21,24 +21,7 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
   <span class="equation-tag">(2)</span>
 </p>
 
-<!-- 若需要文献引用脚注，可加在这里（示例写法） -->
-<p id="ref12">[12] 这里补充文献具体内容或跳转链接</p>
 
-<!-- 可选：简单 CSS 美化公式显示（放 Markdown 里可内嵌<style>，或放单独样式文件） -->
-<style>
-.formula {
-  font-style: italic; /* 模拟公式字体 */
-}
-.formula-equation {
-  margin: 1em 0;
-  padding-left: 2em; 
-  text-indent: -1em;
-}
-.equation-tag {
-  float: right;
-  font-weight: bold;
-}
-</style>
 ## Instance-level Double Contrastive Learning
 ## The Affinity Matrix Guides Positive and Negative Pair Identification
 # DataSets
