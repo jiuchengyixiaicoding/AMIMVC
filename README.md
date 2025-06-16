@@ -48,7 +48,6 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 
 
 ## The Affinity Matrix Guides Positive and Negative Pair Identification
-<h2>Our affinity matrix guidance method</h2>
 <p>
   Our affinity matrix guidance method can not only distinguish the samples in the neighborhood according to the affinity 
   but also find the potential high-order neighbors. Fig. 2 shows that our affinity matrix is obtained using the random-walk algorithm 
