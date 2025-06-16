@@ -8,9 +8,9 @@ After the incomplete multi-view features are completed by inference evaluation, 
 ## Encoder
 The view original features and target features are obtained by encoder **E<sub>o</sub><sup>(v)</sup>** and target encoder **E<sub>t</sub><sup>(v)</sup>**, **E<sub>t</sub><sup>(v)</sup>** is the momentum version \[[11]\] of **E<sub>o</sub><sup>(v)</sup>**. Specifically **E<sub>t</sub><sup>(v)</sup>**, is not architecturally different from **E<sub>o</sub><sup>(v)</sup>** and self-adjusts using exponential moving average (EMA) of **E<sub>o</sub><sup>(v)</sup>**.
 
-For each view \( v \), we transmit instances in small batches to **E<sub>o</sub><sup>(v)</sup>** and **E<sub>t</sub><sup>(v)</sup>** to obtain the corresponding view-specific embeddings, i.e.,
+For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(v)</sup>** and **E<sub>t</sub><sup>(v)</sup>** to obtain the corresponding view-specific embeddings, i.e.,
 
-![公式1](https://render.githubusercontent.com/render/math?math=Z_{oj}^{(v)}%20%3D%20E_o^{(v)}(X_i^{(v)}),%20%5Cquad%20Z_{tj}^{(v)}%20%3D%20E_t^{(v)}(X_i^{(v)})%20%5Ctag%7B1%7D)
+**Z<sub>oj</sub><sup>(v)</sup> = E<sub>o</sub><sup>(v)</sup>(X<sub>i</sub><sup>(v)</sup>)**, &emsp; **Z<sub>tj</sub><sup>(v)</sup> = E<sub>t</sub><sup>(v)</sup>(X<sub>i</sub><sup>(v)</sup>)** &emsp; (1)
 ## Cross-view Decoders
 ## Instance-level Double Contrastive Learning
 ## The Affinity Matrix Guides Positive and Negative Pair Identification
