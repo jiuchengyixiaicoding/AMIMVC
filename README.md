@@ -125,28 +125,6 @@ For each view v, we transmit instances in small batches to **E<sub>o</sub><sup>(
 <p>
   I is the identity matrix. Considering the balance, we set α = 0.5 in the experiment.
 </p>
-
-<style>
-/* 基础排版样式，无复杂依赖 */
-.formula {
-  position: relative; 
-  padding-left: 2em; 
-  text-indent: -1em; 
-  margin: 0.8em 0;
-}
-.equation-tag {
-  position: absolute; 
-  right: 1em; 
-  font-weight: bold;
-}
-sup, sub {
-  font-size: 0.8em;
-  vertical-align: baseline;
-  position: relative;
-}
-sup { top: -0.4em; }  /* 手动调整上标位置 */
-sub { bottom: -0.2em; } /* 手动调整下标位置 */
-</style>
 # DataSets
 <p>In order to prove the performance of our model under datasets of the same type but different sample numbers, we choose Handwritten and MNIST-USPS datasets for experiments.Due to prove the performance of ATIMVC under different types of data sets with increasing sample numbers, we add BDGP and Fashion data sets for experiments.
 You can obtain the required dataset by using this link.</p>
