@@ -139,3 +139,6 @@ python train.py
 
 # Results
 <img width="448" alt="table" src="https://github.com/user-attachments/assets/52cd327f-4c2e-44c4-9aa6-52a4ca649707" />
+
+# FastAPI
+You can use FastAPI to start the server by running main.py and then calling the model by entering the latitude vector X corresponding to the data set selected by the model, which will return you the prediction Y corresponding to the vector, or you can directly simulate it using request.py provided here.
