@@ -294,9 +294,13 @@ python train.py
 # FastAPI
 <p>You can use FastAPI to start the server by running main.py and then calling the model by entering the latitude vector X corresponding to the data set selected by the model, which will return you the prediction Y corresponding to the vector, or you can directly simulate it using request.py provided here.The.pth file that main.py needs is too large to upload, but you can get it at the following link:</p>
 <p>链接: https://pan.baidu.com/s/1lAJAzG2bGtiNdy2jKXvpvg 提取码: f8ny </p>
+
 ![a86a121cbb22807e9d59c5a2636d80f](https://github.com/user-attachments/assets/9e61d9bb-56e8-4050-a87a-32239c02c7de)
+
 ![48808c43359d744da8a809f4d4604a3](https://github.com/user-attachments/assets/bfa43806-b978-4e91-8eeb-0ac25b591967)
+
 ![cc62b44a4108751fa5837d921f3d850](https://github.com/user-attachments/assets/f85daacf-22de-4036-868f-94ffbc0aa878)
+
 ![c427f8f6a98bf302918d4e45f88daa3](https://github.com/user-attachments/assets/7d55f104-5b02-47f6-ae56-4472b966efb8)
 
 
